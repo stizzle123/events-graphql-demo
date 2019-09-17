@@ -62,14 +62,6 @@ app.use(
           });
       },
       createEvent: args => {
-        // const event = {
-        //   _id: Math.random().toString(),
-        //   title: args.eventInput.title,
-        //   description: args.eventInput.description,
-        //   price: +args.eventInput.price,
-        //   createdAt: args.eventInput.createdAt,
-        //   updatedAt: args.eventInput.updatedAt
-        // };
         const event = new Event({
           title: args.eventInput.title,
           description: args.eventInput.description,
