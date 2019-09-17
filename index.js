@@ -49,34 +49,31 @@ app.use(
   graphQLHTTP({
     schema,
     rootValue: {
-      events: () => {
-        return Event.find({})
-          .then(doc => {
-            return doc.map(event => {
-              return { ...event._doc };
-            });
-          })
-          .catch(err => {
-            console.log(err);
-            throw err;
+      events: async () => {
+        try {
+          const doc = await Event.find({});
+          return doc.map(event => {
+            return { ...event._doc };
           });
+        } catch (err) {
+          console.log(err);
+          throw err;
+        }
       },
-      createEvent: args => {
+      createEvent: async args => {
         const event = new Event({
           title: args.eventInput.title,
           description: args.eventInput.description,
           price: +args.eventInput.price
         });
-        return event
-          .save()
-          .then(result => {
-            console.log(result);
-            return { ...result._doc };
-          })
-          .catch(err => {
-            console.log(err);
-            throw err;
-          });
+        try {
+          const result = await event.save();
+          console.log(result);
+          return { ...result._doc };
+        } catch (err) {
+          console.log(err);
+          throw err;
+        }
       }
     },
     graphiql: true
