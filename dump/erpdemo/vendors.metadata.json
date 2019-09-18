@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"erpdemo.vendors"}],"uuid":"8d58b6d4458c47b8a9180a82b87a22de"}
