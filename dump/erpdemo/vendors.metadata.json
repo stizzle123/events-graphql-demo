@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"erpdemo.vendors"}],"uuid":"16908bd1f4bc48288ab4d1bd1f7807c8"}
-=======
 {"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"erpdemo.vendors"}],"uuid":"8d58b6d4458c47b8a9180a82b87a22de"}
->>>>>>> 51d8a75e89be5e2baa984c43eac8d05d638ed664

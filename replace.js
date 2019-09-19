@@ -102,7 +102,8 @@ const singleUser = () => {
     .pbkdf2Sync("password", salt, 1000, 64, "sha512")
     .toString("hex");
   const data = {
-    email: "support@futurecalibration.com",
+    email:
+      "michaelodunewu@advancelogisticservices.com; info@advancelogisticservic...",
     role: "vendor",
     emailVerified: true,
     salt,

@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"erpdemo.vendorreplicas"}],"uuid":"4db5d34c701345218fe92b1aa4cd0a27"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"erpdemo.vendorreplicas"}],"uuid":"74c83d18a65640e7b18d6442d6cc266b"}
