@@ -1,5 +1,6 @@
 const json = require("./convertcsv.json");
 const fs = require("fs");
+const crypto = require("crypto");
 const vendorlist = require("./vendorslist.json");
 
 const newVendors = json.map(
@@ -63,7 +64,58 @@ const rewriteList = vendorlist.map(vendors => {
 
 // console.log(rewriteList);
 const stringify2 = JSON.stringify(rewriteList);
-fs.writeFile("vendors2.json", stringify2, err => {
+// fs.writeFile("vendors2.json", stringify2, err => {
+//   if (err) throw err;
+//   console.log("Saved!!!");
+// });
+
+const vendorUserList = vendorlist.map(vendors => {
+  const salt = crypto.randomBytes(16).toString("hex");
+  const hash = crypto
+    .pbkdf2Sync("password", salt, 1000, 64, "sha512")
+    .toString("hex");
+  const data = {
+    email: vendors.email,
+    role: "vendor",
+    emailVerified: true,
+    salt,
+    hash,
+    updated: new Date(),
+    __v: 0
+  };
+
+  return {
+    ...data
+  };
+});
+
+const stringify3 = JSON.stringify(vendorUserList);
+
+// fs.writeFile("vendorusers.json", stringify3, err => {
+//   if (err) throw err;
+//   console.log("SAVED!!!");
+// });
+
+const singleUser = () => {
+  const salt = crypto.randomBytes(16).toString("hex");
+  const hash = crypto
+    .pbkdf2Sync("password", salt, 1000, 64, "sha512")
+    .toString("hex");
+  const data = {
+    email: "support@futurecalibration.com",
+    role: "vendor",
+    emailVerified: true,
+    salt,
+    hash,
+    updated: new Date(),
+    __v: 0
+  };
+  return { ...data };
+};
+
+const stringify4 = JSON.stringify(singleUser());
+
+fs.writeFile("singleUser.json", stringify4, err => {
   if (err) throw err;
-  console.log("Saved!!!");
+  console.log("SAVED!!!!");
 });
