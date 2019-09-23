@@ -93,7 +93,9 @@ app.use(
           .save()
           .then(result => {
             createdEvent = { ...result._doc };
-            return User.findById("5d81ecc16065bf49b80b1ccf");
+            return User.findById("5d81ecc16065bf49b80b1ccf").populate(
+              "creator"
+            );
           })
           .then(user => {
             if (!user) {
@@ -117,8 +119,9 @@ app.use(
           password: hash
         });
         try {
+          // user.password = await user.hashPassword(args.userInput.password);
           const result = await user.save();
-          // console.log(result);
+          console.log(result);
           return { ...result._doc, password: null };
         } catch (err) {
           console.log({ Message: err.errmsg });
